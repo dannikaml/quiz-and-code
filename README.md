@@ -27,3 +27,7 @@ Youtube:
 
   Google:
    - https://www.google.com/search?q=difference+between+queryselector+and+getelementbyid&rlz=1C1CHBF_enUS1037US1037&oq=difference+between+querysel&aqs=chrome.0.0i512j69i57j0i512l4j0i22i30i625.14974j1j15&sourceid=chrome&ie=UTF-8 (difference between querySelector and getElebmentById)
+
+
+MDN:
+ - https://developer.mozilla.org/en-US/docs/Web/API/Event/target (event.target)

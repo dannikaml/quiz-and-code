@@ -48,7 +48,7 @@ function showQuestion(questions) {
 
 }
 
-//fucniton to reset the questions and answers
+//function to reset the questions and answers
 function resetAnswers() {
    submitBtn.classList.add('hide')
    while (answerElement.firstChild) {
@@ -59,8 +59,32 @@ function resetAnswers() {
 }
 
 
-//Select Answer
-function selectAnswer() {
+//Select Answer function / submit button to move on to next question
+function selectAnswer(e) {
+   var answerBtn = e.target
+   var correct = answerBtn.dataset.correct
+   showStatus(document.body, correct)
+   Array.from(answerElement.children).forEach(button => {
+      showStatus(button, button.dataset.correct)
+   })
+   submitBtn.classList.remove('hide')
+
+}
+
+//show whether answer selected is correct or incorrect
+function showStatus(element, correct) {
+   clearStatus(element)
+   if (correct) {
+      element.classList.add('correct')
+   } else {
+      element.classList.add('incorrect')
+   }
+}
+
+//set remove correct or incorrect
+function clearStatus(element) {
+   element.classList.remove('correct')
+   element.classList.remove('incorrect')
 
 }
 

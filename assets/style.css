@@ -68,10 +68,12 @@
   }
   
 .btn.correct {
-  
+  color: green
+
 }
 
 .btn.incorrect {
+  color: red;
 
 }
 
