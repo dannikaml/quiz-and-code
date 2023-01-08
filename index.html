@@ -10,20 +10,35 @@
 </head>
 
 <body>
- <div class="home">
-  <header>
+  <div class="container"></div>
+   <div class="home">
+   <header>
     <h1>Quiz 'n' Code</h1>
       <p>Answer the following Code questions within the time limit.</p>
       <ul> For every incorrect quesiton answered, 15 seconds will be subtracted from your overall time limit.</ul>
       <ul> You have 60 seconds. Click "Start" to begin answering questions and to start the timer.</ul>
-    <!-- Start Button -->
-    <button id="generate" class="btn">Start</button>
-  </header>
- </div>
-   <!--<div class="start">
+ 
+   </header>
 
- </div>--> 
+   <!--Start Button & Next Button-->
+    <div class="controls" class="hide">
+      <button id="start" class="start-btn btn">Start</button>
+      <button id="submit" class="submit-btn btn hide">Submit</button>
+    </div>
+    
+    <!--Question/Answer Buttons and Container-->
+    <div id="question-container" class="hide">
+      <div id="questions">Questions</div>
+      <div id="answers" class="">
+       <button class="btn">Answer 1</button>
+       <button class="btn">Answer 2</button>
+       <button class="btn">Answer 3</button>
+       <button class="btn">Answer 4</button>
+      </div>
+     </div>  
 </body>
 
 
 <script src="./assets/script.js"></script>
+</html>
+

@@ -1,7 +1,22 @@
 * {
     box-sizing: border-box;
+    font-family: Monospace
   }
 
+ body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Monospace
+
+ }
+
+ .container {
+  background-color: white;
+
+ }
 
   .home {
     background-color: hsl(221, 9%, 49%);
@@ -52,3 +67,25 @@
     color: white;
   }
   
+.btn.correct {
+  
+}
+
+.btn.incorrect {
+
+}
+
+.start-btn, .submit-btn {
+ font-weight: bold;
+ font-size: ;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
