@@ -1,5 +1,8 @@
 // Variables set to start the quiz (start button) 
-var startBtn = document.querySelector("#start");
+var startBtn = document.querySelector("#start"); 
+
+//setting an index for the questions and setting them to appear randomly
+let randomQuestion, currentQuestionIndex
 
 startBtn.addEventListener("click", startQuiz);
 
@@ -13,18 +16,18 @@ startBtn.addEventListener("click", startQuiz);
 
 }
 
-
 //Variable to set questions, next questions, and answers
 var questionsContainerElement = document.getElementById('question-container')
 var questionElement = document.getElementById('questions')
-var answerElement = document.getElementById('answer')
+var answerElement = document.getElementById('answers')
 
-//setting an index for the questions and setting them to appear randomly
-let randomQuestion, currentQuestionIndex
-
+//to set the answers and submit 
+var submitBtn = document.querySelector("#submit");
+submitBtn.addEventListener('click', resetAnswers);
 
 //Retrieve next question 
 function submitQuestion() {
+   resetAnswers()
    showQuestion(randomQuestion[currentQuestionIndex])
 
       
@@ -32,7 +35,27 @@ function submitQuestion() {
 
 function showQuestion(questions) {
    questionElement.innerText = questions.questions
+   questions.answers.forEach(answers => {
+      var button = document.createElement('button')
+      button.innerText = answers.text
+      button.classList.add('btn')
+      if (answers.correct) {
+         button.dataset.correct = answers.correct
+      }
+      button.addEventListener('click', selectAnswer)
+      answerElement.appendChild(button)
+   });
 
+}
+
+//fucniton to reset the questions and answers
+function resetAnswers() {
+   submitBtn.classList.add('hide')
+   while (answerElement.firstChild) {
+      answerElement.removeChild
+      (answerElement.firstChild)
+      
+   }
 }
 
 
@@ -47,7 +70,9 @@ var questions = [
    questions: 'Which data type is NOT supported by JavaScript?',
    answers: [
       { text: 'marsh', correct: true },
-      { text: 'boolean, string, array', correct: false}
+      { text: 'boolean', correct: false},
+      { text: 'array', correct: false},
+      { text: 'string', correct: false},
    ]
  }
 ]
