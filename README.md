@@ -5,7 +5,7 @@
 
 ## Description 
 ***
-quiz 'n' code is a website housing a JavaScript based quiz for any and all who want to test their JavaScript knowledge. A ninty second timer runs and for each incorrect answer fifteen seconds is subtracted from the overall timing. At the end of each quiz highscores are saved and you can find them by clicking on the highscores button. 
+quiz 'n' code is a website housing a JavaScript based quiz for any and all who want to test their JavaScript knowledge. A sixty second timer runs and for each incorrect answer fifteen seconds is subtracted from the overall timing. At the end of each quiz highscores are saved and you can find them by clicking on the highscores button. 
 
 ***
 ### Usage
