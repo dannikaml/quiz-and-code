@@ -1,6 +1,15 @@
+//Global var
+var timeRecord = questions.length * 15;
+var timerId;
+
 // Variables set to start the quiz (start button) 
 var startBtn = document.querySelector("#start"); 
-
+var finishBtn = document.querySelector("#finish");
+var timerStart = document.getElementById("time");
+//Variable to set questions, next questions, and answers
+var questionsContainerElement = document.getElementById('question-container')
+var questionElement = document.getElementById('questions')
+var answerElement = document.getElementById('answers')
 //setting an index for the questions and setting them to appear randomly
 let randomQuestion, currentQuestionIndex
 
@@ -16,12 +25,12 @@ startBtn.addEventListener("click", startQuiz)
   questionsContainerElement.classList.remove('hide')
   submitQuestion()
 
+//start the countdown/timer
+  timerId = setInterval(countDown, 1000);
+  timerStart.textContent = timeRecord;
+
 }
 
-//Variable to set questions, next questions, and answers
-var questionsContainerElement = document.getElementById('question-container')
-var questionElement = document.getElementById('questions')
-var answerElement = document.getElementById('answers')
 
 //to set the answers and submit 
 var submitBtn = document.querySelector("#submit");
@@ -76,10 +85,20 @@ function selectAnswer(e) {
    if (randomQuestion.length > currentQuestionIndex + 1) {
       submitBtn.classList.remove('hide')
    }  else {
-      startBtn.innerText = 'Finish'
-      startBtn.classList.remove('hide')
+      finishBtn.innerText = 'Finish'
+      finishBtn.classList.remove('hide')
    }
-   
+
+  /* if (answerBtn.value !== answers[currentQuestionIndex].answers) {
+      // subract the time from time remaining
+      time -= 15;
+  
+      if (time < 0) {
+        time = 0;
+      }
+      //show remaining time
+      timerStart.textContent = time;
+   } */
 
 }
 
@@ -100,43 +119,35 @@ function clearStatus(element) {
 
 }
 
-//Questions
-var questions = [
- {
-   questions: 'Which data type is NOT supported by JavaScript?',
-   answers: [
-      { text: 'marsh', correct: true },
-      { text: 'boolean', correct: false},
-      { text: 'array', correct: false},
-      { text: 'string', correct: false},
-   ]
- },
- {
-   questions: 'To indicate a String in JavaScript, which symbols would be used?',
-   answers: [
-      { text: 'hashtags', correct: false },
-      { text: 'quotations', correct: true},
-      { text: 'question mark', correct: false},
-      { text: 'amperstand', correct: false},
-   ]
-},
-{
-   questions: 'What is the function of isNan?',
-   answers: [
-      { text: 'To check whether a given value is an illegal number or not', correct: true },
-      { text: 'To set a program and function', correct: false},
-      { text: 'To file away information into a database of stored information', correct: false},
-      { text: 'To move information from one file to another', correct: false},
-   ]
-},
-{
-   questions: 'What is a prompt box?',
-   answers: [
-      { text: 'A box that allows the user to type stored notes', correct: false },
-      { text: 'A box for collecting symbols', correct: false},
-      { text: 'A box that allows the user to enter input by providing a text box', correct: true},
-      { text: 'A box for prompts', correct: false},
-   ]
-},
-]
+function finishQuiz() {
+   // to stop the timer
+   clearInterval(timerId);
+ 
+   // show end screen
+   var finishPage = document.getElementById('end-page');
+   finishPage.removeAttribute('class');
+   finishBtn.innerText = 'Finish'
+      finishBtn.classList.remove('hide')
+ 
+   // show final score
+   var showScore = document.getElementById('show-score');
+   showScore.textContent = timeRecord;
+ 
+   // hide questions section
+   questionElement.setAttribute('class', 'hide');
+ }
 
+
+function countDown() {
+   // time set
+   timeRecord--;
+   timerStart.textContent = timeRecord;
+ 
+   // to check if time has run out berfore or by end of quiz
+   if (timeRecord <= 0) {
+     finishQuiz();
+   }
+ }
+
+//Save highscore once button is clicked
+//finishBtn.onclick = saveHighscore;

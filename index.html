@@ -10,14 +10,19 @@
 </head>
 
 <body>
+  <div class="timer">Time Remaining: <span id="time">0</span></div>
+
   <div class="container"></div>
-   <div class="home">
+   <div id="home-start" class="home">
+    
    <header>
     <h1>Quiz 'n' Code</h1>
-      <p>Answer the following Code questions within the time limit.</p>
+     <article>Take the quiz and challenge your JavaScript knowledge!</article>
+      <ul> Answer the following Code questions within the time limit. You have 60 seconds!</ul>
       <ul> For every incorrect quesiton answered, 15 seconds will be subtracted from your overall time limit.</ul>
-      <ul> You have 60 seconds. Click "Start" to begin answering questions and to start the timer.</ul>
- 
+      <ul> Click "Start" to begin answering questions. As soon as you do the timer will begin counting down from 60.</ul>
+    
+      </div>
    </header>
 
    <!--Start Button & Next Button-->
@@ -38,9 +43,15 @@
      </div>  
      <div class="controls" class="hide"></div>
      <button id="submit" class="submit-btn btn hide">Submit</button>
+
+     <div id="end-page" class="hide">
+      <h2>Congradulations! You have completed the Quiz</h2>
+      <p>You Scored:<span id="show-score"></span>.</p>
+     </div>
+     <button id="finish" class="finish-btn btn hide">Finish</button>
 </body>
 
-
+<script src="./assets/questions.js"></script>
 <script src="./assets/script.js"></script>
 </html>
 

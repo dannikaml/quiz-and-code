@@ -6,15 +6,30 @@
  body {
   padding: 0;
   margin: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
   font-family: Monospace
 
  }
 
+ .timer {
+  flex-direction: column;
+  background-color: rgb(32, 194, 178); 
+  border-radius: 4px;
+  border-color: rgb(64, 155, 155);
+  color: white;
+  padding: 10px 50px;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 30px;
+  margin-left: 550px;
+
+}
+
+
  .container {
   background-color: white;
+  margin: center;
 
  }
 
@@ -45,12 +60,18 @@
   
   }
 
+  article {
+    text-decoration: underline;
+    
+  }
+
   h1 {
     text-decoration: underline;
     
   }
 
   .btn {
+    flex-direction: column;
     background-color: rgb(51, 61, 114); 
     border-radius: 4px;
     border-color: azure;
@@ -79,13 +100,21 @@
 
  .start-btn, .submit-btn {
  font-weight: bold;
- font-size: ;
+
+}
+
+.finish-btn {
+  font-weight: bold;
+  color: rgb(230, 191, 233);
+  background-color: rgb(32, 194, 178);
+
 }
 
  .controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-left: 275px;
 }
 
  .hide {
