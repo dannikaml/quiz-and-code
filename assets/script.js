@@ -4,7 +4,9 @@ var startBtn = document.querySelector("#start");
 //setting an index for the questions and setting them to appear randomly
 let randomQuestion, currentQuestionIndex
 
-startBtn.addEventListener("click", startQuiz);
+//(submitBtn .addEventListener / ++ to add one to index)
+startBtn.addEventListener("click", startQuiz)
+
 
  function startQuiz() {
   console.log("button clicked")
@@ -24,6 +26,10 @@ var answerElement = document.getElementById('answers')
 //to set the answers and submit 
 var submitBtn = document.querySelector("#submit");
 submitBtn.addEventListener('click', resetAnswers);
+submitBtn.addEventListener('click', () => {
+   currentQuestionIndex++
+   submitQuestion()
+})
 
 //Retrieve next question 
 function submitQuestion() {
@@ -67,7 +73,13 @@ function selectAnswer(e) {
    Array.from(answerElement.children).forEach(button => {
       showStatus(button, button.dataset.correct)
    })
-   submitBtn.classList.remove('hide')
+   if (randomQuestion.length > currentQuestionIndex + 1) {
+      submitBtn.classList.remove('hide')
+   }  else {
+      startBtn.innerText = 'Finish'
+      startBtn.classList.remove('hide')
+   }
+   
 
 }
 
@@ -98,5 +110,33 @@ var questions = [
       { text: 'array', correct: false},
       { text: 'string', correct: false},
    ]
- }
+ },
+ {
+   questions: 'To indicate a String in JavaScript, which symbols would be used?',
+   answers: [
+      { text: 'hashtags', correct: false },
+      { text: 'quotations', correct: true},
+      { text: 'question mark', correct: false},
+      { text: 'amperstand', correct: false},
+   ]
+},
+{
+   questions: 'What is the function of isNan?',
+   answers: [
+      { text: 'To check whether a given value is an illegal number or not', correct: true },
+      { text: 'To set a program and function', correct: false},
+      { text: 'To file away information into a database of stored information', correct: false},
+      { text: 'To move information from one file to another', correct: false},
+   ]
+},
+{
+   questions: 'What is a prompt box?',
+   answers: [
+      { text: 'A box that allows the user to type stored notes', correct: false },
+      { text: 'A box for collecting symbols', correct: false},
+      { text: 'A box that allows the user to enter input by providing a text box', correct: true},
+      { text: 'A box for prompts', correct: false},
+   ]
+},
 ]
+

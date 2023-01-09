@@ -67,27 +67,27 @@
     color: white;
   }
   
-.btn.correct {
-  color: green
+ .btn.correct {
+  color: rgb(84, 237, 84)
 
 }
 
-.btn.incorrect {
-  color: red;
+ .btn.incorrect {
+  color: rgb(239, 5, 5);
 
 }
 
-.start-btn, .submit-btn {
+ .start-btn, .submit-btn {
  font-weight: bold;
  font-size: ;
 }
 
-.controls {
+ .controls {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.hide {
+ .hide {
   display: none;
 }
