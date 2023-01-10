@@ -2,7 +2,7 @@
 var timeRecord = questions.length * 15;
 var timerId;
 
-// Variables set to start the quiz (start button) 
+// Variables set to start/finish the quiz (start/finish button) 
 var startBtn = document.querySelector("#start"); 
 var finishBtn = document.querySelector("#finish");
 var timerStart = document.getElementById("time");
