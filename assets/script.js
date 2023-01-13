@@ -89,18 +89,8 @@ function selectAnswer(e) {
       finishBtn.classList.remove('hide')
    }
 
-  /* if (answerBtn.value !== answers[currentQuestionIndex].answers) {
-      // subract the time from time remaining
-      time -= 15;
-  
-      if (time < 0) {
-        time = 0;
-      }
-      //show remaining time
-      timerStart.textContent = time;
-   } */
+   } 
 
-}
 
 //show whether answer selected is correct or incorrect
 function showStatus(element, correct) {
@@ -110,24 +100,30 @@ function showStatus(element, correct) {
    } else {
       element.classList.add('incorrect')
    }
+
 }
 
 //set remove correct or incorrect
-function clearStatus(element) {
+ function clearStatus(element) {
    element.classList.remove('correct')
    element.classList.remove('incorrect')
 
-}
+} 
 
-function finishQuiz() {
+finishBtn.addEventListener("click", finishQuiz)
+
+ function finishQuiz(event) {
+   var finishBtn = event.target;
+   console.log('finish button clicked')
    // to stop the timer
    clearInterval(timerId);
  
-   // show end screen
+   
+       // show end screen
    var finishPage = document.getElementById('end-page');
-   finishPage.removeAttribute('class');
-   finishBtn.innerText = 'Finish'
-      finishBtn.classList.remove('hide')
+    finishPage.removeAttribute('class');
+    finishBtn.innerText = ('Finish');
+    finishBtn.classList.add('hide');
  
    // show final score
    var showScore = document.getElementById('show-score');
@@ -137,11 +133,35 @@ function finishQuiz() {
    questionElement.setAttribute('class', 'hide');
  }
 
+ 
 
-function countDown() {
+ function countDown() {
    // time set
    timeRecord--;
    timerStart.textContent = timeRecord;
+ }
+
+ 
+
+ answerElement.addEventListener("click", incorrectAnswer)
+
+ function incorrectAnswer() {
+   console.log("answer button clicked");
+
+   if (!answerElement.matches('incorrect')) {
+      return;
+    }
+
+   if (answerElement.value !== questions[currentQuestionIndex = correct].answers) {
+      // subract the time from time remaining
+      timeRecord -= 15;
+  
+      if (timeRecord < 0) {
+        timeRecord = 0;
+      }
+      //show remaining time
+      timerStart.textContent = timeRecord; 
+}
  
    // to check if time has run out berfore or by end of quiz
    if (timeRecord <= 0) {

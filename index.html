@@ -16,6 +16,7 @@
    <div id="home-start" class="home">
     
    <header>
+    <div class="controls" class="hide"></div>
     <h1>Quiz 'n' Code</h1>
      <article>Take the quiz and challenge your JavaScript knowledge!</article>
       <ul> Answer the following Code questions within the time limit. You have 60 seconds!</ul>
@@ -34,7 +35,7 @@
     <!--Question/Answer Buttons and Container-->
     <div id="question-container" class="hide">
       <div id="questions" class="questions">Questions</div>
-      <div id="answers" class="">
+      <div id="answers" class="time">
        <button class="btn">Answer 1</button>
        <button class="btn">Answer 2</button>
        <button class="btn">Answer 3</button>
@@ -45,10 +46,11 @@
      <button id="submit" class="submit-btn btn hide">Submit</button>
 
      <div id="end-page" class="hide">
-      <h2>Congradulations! You have completed the Quiz</h2>
+      <div id="" class="finish-btn"></div>
+      <h2>Times Up!</h2>
       <p>You Scored:<span id="show-score"></span>.</p>
      </div>
-     <button id="finish" class="finish-btn btn hide">Finish</button>
+     <button id="finish" class="finishBtn btn hide">Finish</button>
 </body>
 
 <script src="./assets/questions.js"></script>
