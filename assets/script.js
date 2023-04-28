@@ -1,6 +1,8 @@
 //Global var
 var timeRecord = questions.length * 15;
 var timerId;
+var highScores = [];
+
 
 // Variables set to start/finish the quiz (start/finish button) 
 var startBtn = document.querySelector("#start"); 
@@ -118,7 +120,9 @@ finishBtn.addEventListener("click", finishQuiz)
    // to stop the timer
    clearInterval(timerId);
  
-   
+   saveScore();
+   window.location.href = 'highscore.html';
+
        // show end screen
    var finishPage = document.getElementById('end-page');
     finishPage.removeAttribute('class');
@@ -145,6 +149,10 @@ finishBtn.addEventListener("click", finishQuiz)
 
  answerElement.addEventListener("click", incorrectAnswer)
 
+
+
+
+
  function incorrectAnswer() {
    console.log("answer button clicked");
 
@@ -169,5 +177,48 @@ finishBtn.addEventListener("click", finishQuiz)
    }
  }
 
-//Save highscore once button is clicked
-//finishBtn.onclick = saveHighscore;
+ function checkAnswer(selectedButton) {
+   const selectedAnswer = selectedButton.dataset.correct === 'true';
+   if (selectedAnswer) {
+     showStatus(selectedButton, true);
+   } else {
+     showStatus(selectedButton, false);
+     timeRecord -= 15;
+     if (timeRecord < 0) {
+       timeRecord = 0;
+     }
+     timerStart.textContent = timeRecord;
+   }
+   if (randomQuestion.length > currentQuestionIndex + 1) {
+     submitBtn.classList.remove('hide');
+   } else {
+     finishBtn.innerText = 'Finish';
+     finishBtn.classList.remove('hide');
+   }
+ }
+
+ 
+
+ function saveScore() {
+   const name = prompt("Please enter your name:");
+   const score = { name, score: timeRecord };
+   highScores.push(score);
+   localStorage.setItem('highscores', JSON.stringify(highScores));
+ 
+   var highScoresList = document.getElementById('highScoresList');
+   if (highScoresList) {
+     highScoresList.innerHTML = ''; // clear the list before re-populating
+     highScores.forEach(score => {
+       var li = document.createElement('li');
+       li.innerText = score.name + ' - ' + score.score;
+       highScoresList.appendChild(li);
+     });
+   }
+ 
+   finishBtn.addEventListener('click', () => {
+    saveScore();
+    window.location.assign('highscores.html');
+  });
+ }
+ 
+
